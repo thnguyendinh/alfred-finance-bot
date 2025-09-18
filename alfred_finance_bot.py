@@ -31,8 +31,11 @@ GOOGLE_CREDENTIALS_JSON = os.environ.get('GOOGLE_CREDENTIALS_JSON', '{}')
 client = MongoClient(MONGO_URI)
 db = client['alfred_finance']
 nlp = spacy.load("vi_core_news_sm")
-classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
-generator = pipeline("text-generation", model="gpt2")
+classifier = pipeline("zero-shot-classification", model="distilbert-base-uncased")
+generator = pipeline("text-generation", model="distilgpt2")
+#nlp = spacy.load("vi_core_news_sm")
+#classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
+#generator = pipeline("text-generation", model="gpt2")
 scheduler = AsyncIOScheduler()
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
